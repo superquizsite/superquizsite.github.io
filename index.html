@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>super quiz 100% good code</title>
+	<link rel="stylesheet" href="styles.css" />
+	<link rel="stylesheet" href="rainbow_styling.css" />
+	<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+	<meta charset="utf-8">
+</head>
+<body>
+	<h1 id="welcome">Welcome to the super quiz!</h1>
+	<h3 class="rainbow">If you don't like, money back 100% true</h3>
+	<div>
+		<span><strong>Enter your name:</strong></span>
+		<input class="getData" type="text" placeholder="Name" />
+		<p>Welcome to the quiz, <span></span>!</p>
+	</div>
+
+	<div class="quizSection">
+		
+	</div>
+	<script type="text/javascript">
+		jQuery(function($) {
+			// set all question display fields to hidden
+			$('input.getData').siblings('p').hide();
+			// set question number for accurate dynamic adding
+			var qNum = 0;
+			// create json object for dynamic question adding
+			var quiz_data = [
+				{
+					text: "What is the answer to life?"
+				},
+				{
+					text: "Who desided to make the <aside> tag?"
+				},
+				{
+					text: "Who thought that css would be so hard?"
+				},
+				{
+					text: "Is cake a real function in javascript?"
+				},
+				{
+					text: "Who is God?"
+				},
+				{
+					text: "Who thought of fontawesome?"
+				},
+			];
+			// keypress event that handles when we press enter
+			$(window).on('keypress', function(e){
+				var code = e.keyCode || e.which;
+				if(code == 13 && ( $(e.target).is('input.getData') )) {
+				   	entorData(e.target);
+				}
+			});
+
+			// function used to update entry data into display field
+			function entorData(element) {
+				// 1. value ^element
+				var eleValue = $(element).val();
+				// 2. get sibling
+				var valueDisplay = $(element).siblings('p').children('span');
+				// 3. pass ^element value as .text() valueDisplay
+				$(valueDisplay).text(eleValue);
+				// show hidden elemnt containing dynamic value
+				$(valueDisplay).parent('p').show(500);
+				// hide label once question is ansered
+				$(element).siblings('span').hide(1);
+				// hide input field
+				$(element).hide(1);
+			}
+			function addQuizQuestion(qNum) {
+				
+				
+				// 2. structure our quiz question
+					// 2a. create question parent div
+					var question_div = $('<div></div>');
+					// 2b. create question label
+					var question_label = ('<span>Question #'+(qNum + 1)+'</span>')
+					// 2c. create question input field
+					var question_ans_input = ('<input class="getData" type="text" />')
+					// 2d. create question display field(p tag)
+
+
+					// final. increment quiz question number
+					qNum = qNum + 1;
+			}
+			$('.rainbow').html(function(i, html) {
+  				var chars = $.trim(html).split("");
+  				return '<span>' + chars.join('</span><span>') + '</span>';
+			});
+		});
+	</script>
+</body>
+</html>
