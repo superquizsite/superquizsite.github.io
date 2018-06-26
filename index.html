@@ -14,6 +14,7 @@
 		<span><strong>Enter your name:</strong></span>
 		<input class="getData" type="text" placeholder="Name" />
 		<p>Welcome to the quiz, <span></span>!</p>
+		<address></address>
 	</div>
 
 	<div class="quizSection">
@@ -28,24 +29,36 @@
 			// create json object for dynamic question adding
 			var quiz_data = [
 				{
-					text: "What is the answer to life?"
+					text: "What is the answer to life?",
+					answer: "Living"
 				},
 				{
-					text: "Who desided to make the <aside> tag?"
+					text: "Who desided to make the aside tag?",
+					answer: "Some no-life who cannot be found at this time"
 				},
 				{
-					text: "Who thought that css would be so hard?"
+					text: "Who thought that css would be so hard?",
+					answer: "Nobody, but it still is"
 				},
 				{
-					text: "Is cake a real function in javascript?"
+					text: "Is cake a real function in javascript?",
+					answer: "No but CakePHP is a thing"
 				},
 				{
-					text: "Who is God?"
+					text: "Who is God?",
+					answer: "..."
 				},
 				{
-					text: "Who thought of fontawesome?"
+					text: "Who thought of fontawesome?",
+					answer: "FortAwesome I think"
 				},
 			];
+
+			// loop through length of array and add each individual question
+			for(var i = 0; i < quiz_data.length; i++) {
+				addQuizQuestion(quiz_data[i], i);
+			}
+
 			// keypress event that handles when we press enter
 			$(window).on('keypress', function(e){
 				var code = e.keyCode || e.which;
@@ -69,21 +82,36 @@
 				// hide input field
 				$(element).hide(1);
 			}
-			function addQuizQuestion(qNum) {
+			function addQuizQuestion(quiz_data, qNum) {
 				
+				console.log(quiz_data);
 				
 				// 2. structure our quiz question
 					// 2a. create question parent div
-					var question_div = $('<div></div>');
+					var questionDiv = $('<div data-question-index="'+qNum+'"></div>');
 					// 2b. create question label
-					var question_label = ('<span>Question #'+(qNum + 1)+'</span>')
+					var questionLabel = $('<span>Question #'+(qNum + 1)+': '+quiz_data.text+' </span>');
 					// 2c. create question input field
-					var question_ans_input = ('<input class="getData" type="text" />')
+					var questionAndInput = $('<input class="getData" type="text" />');
 					// 2d. create question display field(p tag)
+					var displayField = $('<p></p>');
+					// 2e. create span tag that nests inside displayField p tag
+					var dispSpan = $('<span></span>');
 
-
+				// 3. insert our newly created elements into quiz section div
+					// 3a. append your parent div to quiz section(parent div, beinng the container for each question)
+					$(questionDiv).appendTo('.quizSection');
+					// 3b. append label which contains qNum
+					$(questionLabel).appendTo(questionDiv);
+					// 3c. append inputField to container div
+					$(questionAndInput).appendTo(questionDiv);
+					// 3d. append displayField
+					$(displayField).appendTo(questionDiv);
+					// 3e. put displayField span tag
+					$(dispSpan).appendTo(displayField);
 					// final. increment quiz question number
 					qNum = qNum + 1;
+
 			}
 			$('.rainbow').html(function(i, html) {
   				var chars = $.trim(html).split("");
