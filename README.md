@@ -1,4 +1,4 @@
-superquizsite.github.io
-# ! Not a public site, only for private purposes !  
-for legal reasons i must say not all content on the site is made by the authors   
+# ! [superquizsite.github.io](https://superquizsite.github.io)
+# ! The BEST Quiz Site !  
+Feel free to come by and take the quiz!! :eagle:
 By RDIL and jobenscott
