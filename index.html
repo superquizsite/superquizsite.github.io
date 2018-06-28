@@ -8,7 +8,7 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
 	<meta charset="utf-8">
 </head>
-<body>
+<body min-height="150%">
 	<h3 class="rainbow note">If you don't like, money back 100% true</h3>
 	<!--<div>
 		<span><strong>Enter your name:</strong></span>
@@ -34,45 +34,50 @@
 			// Score count
 			var correctQuestions = 0;
 			var notCorrectQuestions = 0;
+			// initiate quiz_data array
+			var quiz_data = [];
+			getAPIQuestions();
 			// create json object for dynamic question adding
-			var quiz_data = [
-				{
-					text: "What is the answer to life?",
-					answer: "Living"
-				},
-				{
-					text: "Who desided to make the aside tag?",
-					answer: "Some no-life who cannot be found at this time"
-				},
-				{
-					text: "Who thought that css would be so hard?",
-					answer: "Nobody, but it still is"
-				},
-				{
-					text: "Is cake a real function in javascript?",
-					answer: "No but CakePHP is a thing"
-				},
-				{
-					text: "Who is God?",
-					answer: "..."
-				},
-				{
-					text: "Who thought of fontawesome?",
-					answer: "FortAwesome I think"
-				},
-			];
+						// var quiz_data = [
+						// 	{
+						// 		text: "What is the answer to life?",
+						// 		answer: "Living"
+						// 	},
+						// 	{
+						// 		text: "Who desided to make the aside tag?",
+						// 		answer: "Some no-life who cannot be found at this time"
+						// 	},
+						// 	{
+						// 		text: "Who thought that css would be so hard?",
+						// 		answer: "Nobody, but it still is"
+						// 	},
+						// 	{
+						// 		text: "Is cake a real function in javascript?",
+						// 		answer: "No but CakePHP is a thing"
+						// 	},
+						// 	{
+						// 		text: "Who is God?",
+						// 		answer: "..."
+						// 	},
+						// 	{
+						// 		text: "Who thought of fontawesome?",
+						// 		answer: "FortAwesome I think"
+						// 	},
+						// ];
 			// verify score user got is possible
-			var max_score = quiz_data.length;
+			var max_score;
 			var score = 0;
 			// verify all questions have been answered
 			var answered = 0;
 			// array to store answer indexes
 			var submittedAnswersArray = [];
 			// loop through length of array and add each individual question
-			for(var i = 0; i < quiz_data.length; i++) {
-				addQuizQuestion(quiz_data[i], i);
+			function initiateQuizQuestionAdditions() {
+				for(var i = 0; i < quiz_data.length; i++) {
+					console.log('add quiz question: #'+(i + 1) );
+					addQuizQuestion(quiz_data[i], i);
+				}
 			}
-
 			// keypress event that handles when we press enter
 			$(window).on('keypress', function(e){
 				var code = e.keyCode || e.which;
@@ -86,6 +91,7 @@
 
 			// function used to update entry data into display field
 			function entorData(element) {
+				console.log('oof');
 				// 1. input value ^element
 				var eleValue = $(element).val();
 				// 2. get sibling
@@ -99,7 +105,7 @@
 				// add answered question index to submittedAnswersArray
 				submittedAnswersArray.push(parseInt(qNum) );
 				// run verifyAnswer
-				verifyAnswer(qNum, eleValue);
+				// verifyAnswer(qNum, eleValue);
 				// hide label once question is ansered
 				$(element).siblings('span').hide(1);
 				// hide input field
@@ -139,6 +145,7 @@
 			function verifyAnswer(qNum, submitedAnswer) {
 				if(quiz_data[qNum].answer == submitedAnswer) {
 					score = score + 1;
+					console.log('score: '+score);
 				}
 			}
 
@@ -164,6 +171,25 @@
 					}
 				}
 			});
+
+			function getAPIQuestions() {
+				$.ajax({
+					url: "https://opentdb.com/api.php?amount=10&category=23&difficulty=medium&type=boolean",
+					success: function(data) { 
+						$(data.results).each(function() {
+							// var question = this.question;
+							// var answer = this.correct_answer;
+							quiz_data.push({
+								text: this.question,
+								answer: this.correct_answer
+							});
+						});
+						max_score = quiz_data.length;
+						console.log(max_score);
+						initiateQuizQuestionAdditions();
+					}
+				});
+			}
 
 			// create function to get final score
 			function getScore() {
