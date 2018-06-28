@@ -72,3 +72,11 @@ iframe {
 	right: 0px;
 	position: absolute;
 }
+
+#qScore {
+	margin: 30px;
+}
+
+body {
+	min-height: 115% !important;
+}
