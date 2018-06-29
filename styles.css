@@ -40,6 +40,7 @@ iframe {
 	font-family: 'Exo 2', sans-serif;
 }
 
+
 .quizSection {
 	background: white;
 	border: 5px solid black;
@@ -50,9 +51,10 @@ iframe {
   	margin: 0 auto;
 }
 
-.quizSection #questionSection .oof {
+.quizSection #questionSection .oof, .quizSection #questionSection .oof span, .quizSection #questionSection .oof .inputContainer {
 	display: table;
   	margin: 0 auto;
+  	text-align: center;
 }
 
 .quizSection a {
@@ -79,4 +81,30 @@ iframe {
 
 body {
 	min-height: 115% !important;
+}
+
+#reset {
+	margin: 40px;
+}
+
+#navbar {
+	width: 100vw;
+	height: 60px;
+}
+
+#navbar div {
+	position: relative;
+    float: left;
+    width: calc(100vw / 3);
+    height: 100%;
+    background: white;
+    text-align: center;
+    line-height: 2;
+    transition: background 0.5s;
+    margin-bottom: 10px;
+}
+
+#navbar div:hover {
+	background: lightgray;
+	cursor: pointer;
 }
