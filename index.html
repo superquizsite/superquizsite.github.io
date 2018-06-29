@@ -9,64 +9,29 @@
 	<meta charset="utf-8">
 </head>
 <body min-height="150%">
+	<div id="navbar">
+		<div class="cLink" data-value="23">History</div>
+		<div class="cLink" data-value="21">Sports</div>
+		<div class="cLink" data-value="12">Music</div>
+	</div>
 	<h3 class="rainbow note">If you don't like, money back 100% true</h3>
-	<!--<div>
-		<span><strong>Enter your name:</strong></span>
-		<input class="getData" type="text" placeholder="Name" />
-		<p>Welcome to the quiz, <span></span>!</p>
-		<address></address>
-	</div>-->
-
 	<div class="quizSection">
 		<h1 id="welcome" class="rainbow">Welcome to the super quiz!</h1>
 		<div id="questionSection"></div>
 		<a href="#" class="hvr-ripple-out hvr-rectangle-out" id="get-score">Get Score</a>
 	</div>
-	<center>
-		<h1 id='qScore'></h1>
-	</center>
+	<button id="reset">Reset Quiz</button>
 	<script type="text/javascript">
 		jQuery(function($) {
-			// set all question display fields to hidden
-			$('input.getData').siblings('p').hide();
 			// set question number for accurate dynamic adding
 			var qNum = 0;
 			// Score count
 			var correctQuestions = 0;
 			var notCorrectQuestions = 0;
 			// initiate quiz_data array
-			var quiz_data = [];
-			getAPIQuestions();
-			// create json object for dynamic question adding
-						// var quiz_data = [
-						// 	{
-						// 		text: "What is the answer to life?",
-						// 		answer: "Living"
-						// 	},
-						// 	{
-						// 		text: "Who desided to make the aside tag?",
-						// 		answer: "Some no-life who cannot be found at this time"
-						// 	},
-						// 	{
-						// 		text: "Who thought that css would be so hard?",
-						// 		answer: "Nobody, but it still is"
-						// 	},
-						// 	{
-						// 		text: "Is cake a real function in javascript?",
-						// 		answer: "No but CakePHP is a thing"
-						// 	},
-						// 	{
-						// 		text: "Who is God?",
-						// 		answer: "..."
-						// 	},
-						// 	{
-						// 		text: "Who thought of fontawesome?",
-						// 		answer: "FortAwesome I think"
-						// 	},
-						// ];
+			var quiz_data = [];	
 			// verify score user got is possible
 			var max_score;
-			var score = 0;
 			// verify all questions have been answered
 			var answered = 0;
 			// array to store answer indexes
@@ -79,51 +44,39 @@
 				}
 			}
 			// keypress event that handles when we press enter
-			$(window).on('keypress', function(e){
-				var code = e.keyCode || e.which;
-				if(code == 13 && ( $(e.target).is('input.getData') ) ) {
-					if(!$(e.target).val().length == 0) {
-						entorData(e.target);
-					}
-				   	
-				}
+			$(document).on('click', '.getData', function(e){
+				var qNum = this.id;
+				var user_answer = this.value;
+				submittedAnswersArray.push(parseInt(qNum) );
 			});
 
-			// function used to update entry data into display field
-			function entorData(element) {
-				console.log('oof');
-				// 1. input value ^element
-				var eleValue = $(element).val();
-				// 2. get sibling
-				var valueDisplay = $(element).siblings('p').children('span');
-				// 3. pass ^element value as .text() valueDisplay
-				$(valueDisplay).text(eleValue);
-				// show hidden elemnt containing dynamic value
-				$(valueDisplay).parent('p').show(500);
-				// create vasr for question index
-				var qNum = $(element).parent('div').attr('data-question-index');
-				// add answered question index to submittedAnswersArray
-				submittedAnswersArray.push(parseInt(qNum) );
-				// run verifyAnswer
-				// verifyAnswer(qNum, eleValue);
-				// hide label once question is ansered
-				$(element).siblings('span').hide(1);
-				// hide input field
-				$(element).hide(1);
-			}
+			$('div.cLink').click(function() {
+				// api call to fill quiz_data array
+				getAPIQuestions($(this).data('value'));	
+			});
+			$('#reset').click(function (){ 
+				// reset vars
+					qNum = 0;
+					correctQuestions = 0;
+					notCorrectQuestions = 0;
+					quiz_data = [];	
+					max_score = 0;
+					answered = 0;
+					submittedAnswersArray = [];
+
+				$('#questionSection').empty();
+			});
 			function addQuizQuestion(quiz_data, qNum) {
 				// 2. structure our quiz question
 					// 2a. create question parent div
 					var questionDiv = $('<div class="oof" data-question-index="'+qNum+'"></div>');
 					// 2b. create question label
-					var questionLabel = $('<span>Question #'+(qNum + 1)+': '+quiz_data.text+' </span>');
-					// 2c. create question input field
-					var questionAndInput = $('<input class="getData" type="text" />');
-					// 2d. create question display field(p tag)
-					var displayField = $('<p></p>');
-					// 2e. create span tag that nests inside displayField p tag
-					var dispSpan = $('<span></span>');
-					// create horizonatal row to add below each .oof section
+					var questionLabel = $('<span>Question #'+(qNum + 1)+': '+quiz_data.text+' </span><br />');
+					// 2c. create question input field and labels
+					var tL = $('<label for="'+qNum+'">True</label>');
+					var fL = $('<label for="'+qNum+'">False</label>');
+					var trueInput = $('<input value="true" class="getData true" id="'+qNum+'" name="'+qNum+'" type="radio" checked="checked" />');
+					var falseInput = $('<input value="false" class="getData false" id="'+qNum+'" name="'+qNum+'"  type="radio" />');
 					var hr = $('<hr />');
 
 				// 3. insert our newly created elements into quiz section div
@@ -131,92 +84,102 @@
 					$(questionDiv).appendTo('#questionSection');
 					// 3b. append label which contains qNum
 					$(questionLabel).appendTo(questionDiv);
-					// 3c. append inputField to container div
-					$(questionAndInput).appendTo(questionDiv);
-					// 3d. append displayField
-					$(displayField).appendTo(questionDiv);
-					// 3e. put displayField span tag
-					$(dispSpan).appendTo(displayField);
-					// append hr to questionSection
+					// 3c. append labels and inputField to container div
+					$(tL).appendTo(questionDiv);
+					$(trueInput).appendTo(questionDiv);
+					$(fL).appendTo(questionDiv)
+					$(falseInput).appendTo(questionDiv);
 					$(hr).appendTo('#questionSection');
 					// final. increment quiz question number
 					qNum = qNum + 1;
 			}
-			function verifyAnswer(qNum, submitedAnswer) {
-				if(quiz_data[qNum].answer == submitedAnswer) {
-					score = score + 1;
-					console.log('score: '+score);
-				}
-			}
 
 			// create a jquery click function for get score a tag
 			$('#get-score').click(function(){
-				// do something for as many times as the length of quiz_questions array
-				for(var i = 0; i < quiz_data.length; i++) {
-					// check if answer index has been submitted
+				
 
-					if($.inArray(i, submittedAnswersArray) === -1) {
-						// change input field css to showcase unfished answer
-						$('div[data-question-index='+i+']').children('input.getData').css({
-							'box-shadow': '0 0 10px red',
-							'margin': '10px'
-						});
-						// append h5 tag below display field in each question div that has not been answered
-						$('div[data-question-index='+i+']').append('<br /><h5 style="color: red; width:100%; text-align:center;">Please answer the question by putting your answer in the box above!</h5>');
-					} else {
-						answered++;
-						if(answered == quiz_data.length) {
-							getScore();
-						}
-					}
-				}
+				// create score div
+				var scoreDiv = $('<div id="scoreDiv"></div>');
+				// create overScoreDisplay
+				var overlayScoreDisplay = $('<div class="overlayScoreDisplay"></div>');
+				// append scoreDiv
+				$(scoreDiv).appendTo('body');
+				// append overlayDisplay to scorediv
+				$(overlayScoreDisplay).appendTo(scoreDiv);
+				// css for score div
+				$('div#scoreDiv').css({
+					width: $(document).outerWidth(),
+					height: $(document).outerHeight(),
+					'background-color': 'rgba(229,229,229, 0.85)',
+					position: 'absolute',
+					top: 0
+				});
+				// css for overlayScoreDisplay
+				$('.overlayScoreDisplay').css({
+					'text-align': 'center',
+					'font-size': '50px',
+					'line-height': 20,
+					'display': 'table',
+  					'margin': '0 auto'				
+				});
+
+				getScore(overlayScoreDisplay);
 			});
 
-			function getAPIQuestions() {
+			$(document).on('click', '#scoreDiv', function() {
+				$(this).remove();
+			});
+			function getAPIQuestions(cLinkVal) {
+				// reset vars
+				if(!$('#questionSection').is(':empty')) {
+					console.log('here');
+					qNum = 0;
+					correctQuestions = 0;
+					notCorrectQuestions = 0;
+					quiz_data = [];	
+					max_score = 0;
+					answered = 0;
+					submittedAnswersArray = [];
+					$('#questionSection').empty();
+				}
+				// make api request
 				$.ajax({
-					url: "https://opentdb.com/api.php?amount=10&category=23&difficulty=medium&type=boolean",
+					url: 'https://opentdb.com/api.php?amount=10&category='+cLinkVal+'&type=boolean',
 					success: function(data) { 
 						$(data.results).each(function() {
-							// var question = this.question;
-							// var answer = this.correct_answer;
 							quiz_data.push({
 								text: this.question,
-								answer: this.correct_answer
+								answer: this.correct_answer.toLowerCase()
 							});
 						});
 						max_score = quiz_data.length;
-						console.log(max_score);
 						initiateQuizQuestionAdditions();
 					}
 				});
 			}
 
 			// create function to get final score
-			function getScore() {
+			function getScore(overlayScoreDisplay) {
 				for(var a = 0; a < quiz_data.length; a++) {
 					var question = quiz_data[a].text;
 					var correct_answer = quiz_data[a].answer;
-					var user_answer = $('div[data-question-index='+a+']').children('input.getData').val();
-					// console.warn('question #'+a+': '+question+' --- correct answer: '+correct_answer+' --- user_answer: '+user_answer);
-					console.log(user_answer == correct_answer);
+					var user_answer = $('input[type=radio][name="'+a+'"]').val();
+					// handle scoring if last question is answered correctly
 					if(user_answer == correct_answer) {
 						correctQuestions++;
 						if((correctQuestions + notCorrectQuestions) == max_score) {
-					// 		//give score
-							console.info(correctQuestions);
-							$('h1#qScore').text('Your Final Score Is: '+correctQuestions);
+							//give score
+							$(overlayScoreDisplay).text('Your Final Score Is: '+correctQuestions+'/'+max_score);
 						}
 					}
+					// handle scoring if last question is answered incorrectly
 					else {
 						notCorrectQuestions++;
 						if((correctQuestions + notCorrectQuestions) == max_score) {
-					// 		//give score
-							console.info(correctQuestions);
-							$('h1#qScore').text('Your Final Score Is: '+correctQuestions);
+							//give score
+							$(overlayScoreDisplay).text('Your Final Score Is: '+correctQuestions+'/'+max_score);
+
 						}
-						// else {
-							
-						// }
 					}
 				}
 			}
