@@ -1,1 +1,1 @@
-# Its really simple, please don't contribute unless authorized by RDIL!
+# Feel free to contribute!
