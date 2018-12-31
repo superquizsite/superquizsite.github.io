@@ -8,16 +8,6 @@ html, body {
 	margin: 0;
 	background: #FFD485;
 }
-/*
-#welcome {
-	text-align: center;
-	border-bottom: cornflowerblue 2px dashed;
-	background: #f0b7a1; 
-	background: -moz-linear-gradient(left, #f0b7a1 0%, #8c3310 50%, #bf6e4e 100%); 
-	background: -webkit-linear-gradient(left, #f0b7a1 0%,#8c3310 50%,#bf6e4e 100%); 
-	background: linear-gradient(to right, #f0b7a1 0%,#8c3310 50%,#bf6e4e 100%); 
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0b7a1', endColorstr='#bf6e4e',GradientType=1 );
-} */
 
 .rainbow {
 	text-align: center;
@@ -39,7 +29,6 @@ html, body {
 iframe {
 	font-family: 'Exo 2', sans-serif;
 }
-
 
 .quizSection {
 	background: white;
@@ -67,12 +56,6 @@ iframe {
     display: table;
     margin: 0 auto;
     margin-bottom: 25px;
-}
-
-#google_translate_element {
-	bottom: 0px;
-	right: 0px;
-	position: absolute;
 }
 
 #qScore {
