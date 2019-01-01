@@ -1,7 +1,5 @@
-.rainbow,
-.anim-text-flow-hover:hover {;}
-.rainbow span,
-  .anim-text-flow-hover:hover span {
+.rainbow, .anim-text-flow-hover:hover {;}
+.rainbow span, .anim-text-flow-hover:hover span {
   animation-name: anim-text-flow-keys;
   animation-duration: 50s;
   animation-iteration-count: infinite;
@@ -233,57 +231,46 @@
   .anim-text-flow-hover:hover span:nth-of-type(40) {
   animation-delay: -12s;
 }
-
 .rainbow span:nth-of-type(41),
   .anim-text-flow-hover:hover span:nth-of-type(41) {
   animation-delay: -11.8s;
 }
-
 .rainbow span:nth-of-type(42),
   .anim-text-flow-hover:hover span:nth-of-type(42) {
   animation-delay: -11.6s;
 }
-
 .rainbow span:nth-of-type(43),
   .anim-text-flow-hover:hover span:nth-of-type(43) {
   animation-delay: -11.4s;
 }
-
 .rainbow span:nth-of-type(44),
   .anim-text-flow-hover:hover span:nth-of-type(44) {
   animation-delay: -11.2s;
 }
-
 .rainbow span:nth-of-type(45),
   .anim-text-flow-hover:hover span:nth-of-type(45) {
   animation-delay: -11s;
 }
-
 .rainbow span:nth-of-type(46),
   .anim-text-flow-hover:hover span:nth-of-type(46) {
   animation-delay: -10.8s;
 }
-
 .rainbow span:nth-of-type(47),
   .anim-text-flow-hover:hover span:nth-of-type(47) {
   animation-delay: -10.6s;
 }
-
 .rainbow span:nth-of-type(48),
   .anim-text-flow-hover:hover span:nth-of-type(48) {
   animation-delay: -10.4s;
 }
-
 .rainbow span:nth-of-type(49),
   .anim-text-flow-hover:hover span:nth-of-type(49) {
   animation-delay: -10.2s;
 }
-
 .rainbow span:nth-of-type(50),
   .anim-text-flow-hover:hover span:nth-of-type(50) {
   animation-delay: -10s;
 }
-
 .rainbow span:nth-of-type(51),
   .anim-text-flow-hover:hover span:nth-of-type(51) {
   animation-delay: -9.8s;
