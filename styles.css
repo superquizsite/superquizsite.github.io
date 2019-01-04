@@ -78,7 +78,7 @@ body {
 #navbar div {
     position: relative;
     float: left;
-    width: calc(100vw / 3);
+    width: calc(100vw / 4);
     height: 100%;
     background: white;
     text-align: center;
