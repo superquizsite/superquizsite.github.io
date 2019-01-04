@@ -67,34 +67,34 @@
 			});
 			function addQuizQuestion(quiz_data, qNum) {
 				// 2. structure our quiz question
-					// 2a. create question parent div
-					var questionDiv = $('<div class="oof" data-question-index="'+qNum+'"></div>');
-					// 2b. create question label
-					var questionLabel = $('<span>Question #'+(qNum + 1)+': '+quiz_data.text+' </span><br />');
-					// 2c. create question input field and labels
-					var tL = $('<label for="'+qNum+'">True</label>');
-					var fL = $('<label for="'+qNum+'">False</label>');
-					var trueInput = $('<input value="true" class="getData true" id="'+qNum+'" name="'+qNum+'" type="radio" checked="checked" />');
-					var falseInput = $('<input value="false" class="getData false" id="'+qNum+'" name="'+qNum+'"  type="radio" />');
-					var hr = $('<hr />');
+				// 2a. create question parent div
+				var questionDiv = $('<div class="oof" data-question-index="'+qNum+'"></div>');
+				// 2b. create question label
+				var questionLabel = $('<span>Question #'+(qNum + 1)+': '+quiz_data.text+' </span><br />');
+				// 2c. create question input field and labels
+				var tL = $('<label for="'+qNum+'">True</label>');
+				var fL = $('<label for="'+qNum+'">False</label>');
+				var trueInput = $('<input value="true" class="getData true" id="'+qNum+'" name="'+qNum+'" type="radio" checked="checked" />');
+				var falseInput = $('<input value="false" class="getData false" id="'+qNum+'" name="'+qNum+'"  type="radio" />');
+				var hr = $('<hr />');
 
 				// 3. insert our newly created elements into quiz section div
-					// 3a. append your parent div to quiz section(parent div, beinng the container for each question)
-					$(questionDiv).appendTo('#questionSection');
-					// 3b. append label which contains qNum
-					$(questionLabel).appendTo(questionDiv);
-					// 3c. append labels and inputField to container div
-					$(tL).appendTo(questionDiv);
-					$(trueInput).appendTo(questionDiv);
-					$(fL).appendTo(questionDiv)
-					$(falseInput).appendTo(questionDiv);
-					$(hr).appendTo('#questionSection');
-					// final. increment quiz question number
-					qNum = qNum + 1;
+				// 3a. append your parent div to quiz section(parent div, beinng the container for each question)
+				$(questionDiv).appendTo('#questionSection');
+				// 3b. append label which contains qNum
+				$(questionLabel).appendTo(questionDiv);
+				// 3c. append labels and inputField to container div
+				$(tL).appendTo(questionDiv);
+				$(trueInput).appendTo(questionDiv);
+				$(fL).appendTo(questionDiv)
+				$(falseInput).appendTo(questionDiv);
+				$(hr).appendTo('#questionSection');
+				// final. increment quiz question number
+				qNum = qNum + 1;
 			}
 
 			// create a jquery click function for get score a tag
-			$('#get-score').click(function(){
+			$('#get-score').click(function() {
 				
 				// create score div
 				var scoreDiv = $('<div id="scoreDiv"></div>');
@@ -112,6 +112,7 @@
 					position: 'absolute',
 					top: 0
 				});
+				
 				// css for overlayScoreDisplay
 				$('.overlayScoreDisplay').css({
 					'text-align': 'center',
@@ -123,10 +124,12 @@
 
 				getScore(overlayScoreDisplay);
 			});
+			
 			// Exit score display if clicked 
 			$(document).on('click', '#scoreDiv', function() {
 				$(this).remove();
 			});
+			
 			function getAPIQuestions(cLinkVal) {
 				// reset vars
 				if(!$('#questionSection').is(':empty')) {
@@ -140,6 +143,7 @@
 					submittedAnswersArray = [];
 					$('#questionSection').empty();
 				}
+				
 				// make api request
 				$.ajax({
 					url: 'https://opentdb.com/api.php?amount=10&category='+cLinkVal+'&type=boolean',
