@@ -174,9 +174,12 @@
 					else {
 						notCorrectQuestions++;
 						if((correctQuestions + notCorrectQuestions) == max_score) {
-							//give score
+							// give score
 							$(overlayScoreDisplay).text('Your final score is... '+ correctQuestions + '/'+max_score + '!');
-
+							for(var loopy = 0; loopy < notCorrectQuestions; loopy++) {
+								var texty = $("<p>You got question " + question + " wrong");
+								texty.appendTo(overlayScoreDisplay);
+							}
 						}
 					}
 				}
