@@ -71,7 +71,7 @@ body {
 }
 
 #navbar {
-    width: 100vw;
+    width: 66vw;
     height: 60px;
 }
 
@@ -90,4 +90,9 @@ body {
 #navbar div:hover {
     background: lightgray;
     cursor: pointer;
+}
+
+h1 a {
+    text-decoration: none;
+    color: black;
 }
