@@ -123,7 +123,7 @@
 
 				getScore(overlayScoreDisplay);
 			});
-
+			// Exit score display if clicked 
 			$(document).on('click', '#scoreDiv', function() {
 				$(this).remove();
 			});
@@ -167,7 +167,7 @@
 						correctQuestions++;
 						if((correctQuestions + notCorrectQuestions) == max_score) {
 							// give score
-							$(overlayScoreDisplay).text('Your Final Score Is: '+correctQuestions+'/'+max_score);
+							$(overlayScoreDisplay).text('Your final score is: '+correctQuestions+'/'+max_score);
 						}
 					}
 					// handle scoring if last question is answered incorrectly
