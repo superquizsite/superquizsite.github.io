@@ -9,4 +9,6 @@
    {"category":"History","type":"boolean","difficulty":"medium","question":"Example Question 7","correct_answer":"True","incorrect_answers":["False"]},
    {"category":"History","type":"boolean","difficulty":"medium","question":"Example Question 8","correct_answer":"False","incorrect_answers":["True"]},
    {"category":"History","type":"boolean","difficulty":"easy","question":"Example Question 9","correct_answer":"True","incorrect_answers":["False"]},
-   {"category":"History","type":"boolean","difficulty":"easy","question":"Example Question 10","correct_answer":"False","incorrect_answers":["True"]}]}
+   {"category":"History","type":"boolean","difficulty":"easy","question":"Example Question 10","correct_answer":"False","incorrect_answers":["True"]}
+ ]
+}
