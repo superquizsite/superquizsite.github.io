@@ -13,7 +13,7 @@
 		<div class="cLink" data-value="23">History</div>
 		<div class="cLink" data-value="21">Sports</div>
 		<div class="cLink" data-value="12">Music</div>
-		<div class="cLink" data-value="0"><a href="https://superquizsite.github.io/custom/">Super Quiz Site Exclusives</a></div>
+		<div class="cLink" id="other"><a href="https://superquizsite.github.io/custom/">Super Quiz Site Exclusives</a></div>
 	</div>
 	<h3 class="rainbow note">If you don't like, money back 100% true</h3>
 	<div class="quizSection">
@@ -47,11 +47,14 @@
 			$(document).on('click', '.getData', function(e) {
 				var qNum = this.id;
 				var user_answer = this.value;
-				submittedAnswersArray.push(parseInt(qNum) );
+				submittedAnswersArray.push(parseInt(qNum));
 			});
 
 			$('div.cLink').click(function() {
 				// api call to fill quiz_data array
+                if($(this).data('value') == null) {
+                    return;
+                }
 				getAPIQuestions($(this).data('value'));	
 			});
 			$('#reset').click(function() { 
