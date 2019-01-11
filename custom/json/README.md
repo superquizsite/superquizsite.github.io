@@ -1,5 +1,5 @@
-# regex  
-Guide for custom regex.  
+# JSON  
+Guide for custom questions and the related JSON.  
 
 Start:
 ```json
