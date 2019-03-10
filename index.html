@@ -104,7 +104,6 @@
 
 			// create a jQuery click function for get score a tag
 			$('#get-score').click(function() {
-				
 				// create score div
 				var scoreDiv = $('<div id="scoreDiv"></div>');
 				// create overScoreDisplay
@@ -121,7 +120,7 @@
 					position: 'absolute',
 					top: 0
 				});
-				
+
 				// CSS for overlayScoreDisplay
 				$('.overlayScoreDisplay').css({
 					'text-align': 'center',
@@ -130,10 +129,9 @@
 					'display': 'table',
   					'margin': '0 auto'				
 				});
-
 				getScore(overlayScoreDisplay);
 			});
-			
+
 			// Exit score display if clicked
 			$(document).on('click', '#scoreDiv', function() {
 				$(this).remove();
@@ -152,7 +150,7 @@
 					submittedAnswersArray = [];
 					$('#questionSection').empty();
 				}
-				
+
 				// make API request
 				$.ajax({
 					url: 'https://opentdb.com/api.php?amount=10&category='+cLinkVal+'&type=boolean',
