@@ -2,13 +2,13 @@
  [
    {"category":"MyCategory","type":"boolean","difficulty":"easy","question":"Example Question 1","correct_answer":"False","incorrect_answers":["True"]},
    {"category":"History","type":"boolean","difficulty":"medium","question":"Example Question 2","correct_answer":"False","incorrect_answers":["True"]},
-   {"category":"History","type":"boolean","difficulty":"easy","question":"Example Question 3","correct_answer":"True","incorrect_answers":["False"]},
-   {"category":"History","type":"boolean","difficulty":"medium","question":"Example Question 4","correct_answer":"True","incorrect_answers":["False"]},
-   {"category":"History","type":"boolean","difficulty":"medium","question":"Example Question 5","correct_answer":"False","incorrect_answers":["True"]},
-   {"category":"History","type":"boolean","difficulty":"easy","question":"Example Question 6","correct_answer":"False","incorrect_answers":["True"]},
-   {"category":"History","type":"boolean","difficulty":"medium","question":"Example Question 7","correct_answer":"True","incorrect_answers":["False"]},
-   {"category":"History","type":"boolean","difficulty":"medium","question":"Example Question 8","correct_answer":"False","incorrect_answers":["True"]},
-   {"category":"History","type":"boolean","difficulty":"easy","question":"Example Question 9","correct_answer":"True","incorrect_answers":["False"]},
-   {"category":"History","type":"boolean","difficulty":"easy","question":"Example Question 10","correct_answer":"False","incorrect_answers":["True"]}
+   {"category":"Science","type":"boolean","difficulty":"easy","question":"Example Question 3","correct_answer":"True","incorrect_answers":["False"]},
+   {"category":"Computers","type":"boolean","difficulty":"medium","question":"Example Question 4","correct_answer":"True","incorrect_answers":["False"]},
+   {"category":"Geography","type":"boolean","difficulty":"medium","question":"Example Question 5","correct_answer":"False","incorrect_answers":["True"]},
+   {"category":"Culture","type":"boolean","difficulty":"easy","question":"Example Question 6","correct_answer":"False","incorrect_answers":["True"]},
+   {"category":"Math","type":"boolean","difficulty":"medium","question":"Example Question 7","correct_answer":"True","incorrect_answers":["False"]},
+   {"category":"Books","type":"boolean","difficulty":"medium","question":"Example Question 8","correct_answer":"False","incorrect_answers":["True"]},
+   {"category":"Movies","type":"boolean","difficulty":"easy","question":"Example Question 9","correct_answer":"True","incorrect_answers":["False"]},
+   {"category":"Podcasts","type":"boolean","difficulty":"easy","question":"Example Question 10","correct_answer":"False","incorrect_answers":["True"]}
  ]
 }
