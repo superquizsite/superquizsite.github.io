@@ -12,7 +12,7 @@ Start:
 Then follow up with this statement for each question:
 
 ```json
-{"category":"MyCategory","type":"boolean","difficulty":"mydifficulty","question":"Example Question 1","correct_answer":"mybooleanvalue","incorrect_answers":["mybooleanvalue"]},
+{"category":"MyCategory","type":"boolean","difficulty":"mydifficulty","question":"Example Question","correct_answer":"mybooleanvalue","incorrect_answers":["mybooleanvalue"]},
 ```
 
 Add one of those for each question you want.  
