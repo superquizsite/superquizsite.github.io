@@ -64,18 +64,18 @@
 			});
 			$('#reset').click(function() { 
 				// reset vars
-					qNum = 0;
-					correctQuestions = 0;
-					notCorrectQuestions = 0;
-					quiz_data = [];	
-					max_score = 0;
-					answered = 0;
-					submittedAnswersArray = [];
+				qNum = 0;
+				correctQuestions = 0;
+				notCorrectQuestions = 0;
+				quiz_data = [];	
+				max_score = 0;
+				answered = 0;
+				submittedAnswersArray = [];
 
 				$('#questionSection').empty();
 			});
 			function addQuizQuestion(quiz_data, qNum) {
-				// 2. structure our quiz question
+				// 2. structure quiz question
 				// 2a. create question parent div
 				var questionDiv = $('<div class="oof" data-question-index="'+qNum+'"></div>');
 				// 2b. create question label
@@ -87,8 +87,8 @@
 				var falseInput = $('<input value="false" class="getData false" id="'+qNum+'" name="'+qNum+'"  type="radio" />');
 				var hr = $('<hr />');
 
-				// 3. insert our newly created elements into quiz section div
-				// 3a. append your parent div to quiz section(parent div, beinng the container for each question)
+				// 3. insert newly created elements into quiz section div
+				// 3a. append parent div to quiz section(parent div, beinng the container for each question)
 				$(questionDiv).appendTo('#questionSection');
 				// 3b. append label which contains qNum
 				$(questionLabel).appendTo(questionDiv);
@@ -98,11 +98,11 @@
 				$(fL).appendTo(questionDiv)
 				$(falseInput).appendTo(questionDiv);
 				$(hr).appendTo('#questionSection');
-				// final. increment quiz question number
+				// increment quiz question number
 				qNum = qNum + 1;
 			}
 
-			// create a jquery click function for get score a tag
+			// create a jQuery click function for get score a tag
 			$('#get-score').click(function() {
 				
 				// create score div
@@ -111,7 +111,7 @@
 				var overlayScoreDisplay = $('<div class="overlayScoreDisplay"></div>');
 				// append scoreDiv
 				$(scoreDiv).appendTo('body');
-				// append overlayDisplay to scorediv
+				// append overlayDisplay to scoreDiv
 				$(overlayScoreDisplay).appendTo(scoreDiv);
 				// CSS for score div
 				$('div#scoreDiv').css({
@@ -134,7 +134,7 @@
 				getScore(overlayScoreDisplay);
 			});
 			
-			// Exit score display if clicked 
+			// Exit score display if clicked
 			$(document).on('click', '#scoreDiv', function() {
 				$(this).remove();
 			});
@@ -169,7 +169,6 @@
 				});
 			}
 
-			// create function to get final score
 			function getScore(overlayScoreDisplay) {
 				for(var a = 0; a < quiz_data.length; a++) {
 					var question = quiz_data[a].text;
