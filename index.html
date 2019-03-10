@@ -113,7 +113,7 @@
 				$(scoreDiv).appendTo('body');
 				// append overlayDisplay to scorediv
 				$(overlayScoreDisplay).appendTo(scoreDiv);
-				// css for score div
+				// CSS for score div
 				$('div#scoreDiv').css({
 					width: $(document).outerWidth(),
 					height: $(document).outerHeight(),
@@ -122,7 +122,7 @@
 					top: 0
 				});
 				
-				// css for overlayScoreDisplay
+				// CSS for overlayScoreDisplay
 				$('.overlayScoreDisplay').css({
 					'text-align': 'center',
 					'font-size': '50px',
@@ -153,7 +153,7 @@
 					$('#questionSection').empty();
 				}
 				
-				// make api request
+				// make API request
 				$.ajax({
 					url: 'https://opentdb.com/api.php?amount=10&category='+cLinkVal+'&type=boolean',
 					success: function(data) { 
