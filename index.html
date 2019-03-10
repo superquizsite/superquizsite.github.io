@@ -188,14 +188,13 @@
 						notCorrectQuestions++;
 						if((correctQuestions + notCorrectQuestions) == max_score) {
 							// give score
-							$(overlayScoreDisplay).text('Your final score is... '+ correctQuestions + '/'+max_score + '!');
-
+							$(overlayScoreDisplay).text('Your final score is: '+ correctQuestions + '/'+max_score + '!');
 						}
 					}
 				}
 			}
 
-			// init plugin to create animated rainbow text
+			// load plugin to create animated rainbow text
 			$('.rainbow').html(function(i, html) {
   				var chars = $.trim(html).split("");
   				return '<span>' + chars.join('</span><span>') + '</span>';
