@@ -18,7 +18,7 @@ Then follow up with this statement for each question:
 Add one of those for each question you want.  
 Note you need to switch out the following values:
 > `category` - put in the category of the question (Example: `"History"`).
-> `type` - type must be the string `boolean` or the quiz site will not render the question. **REQUIRED**
+> `type` - type must be the string `boolean` or the quiz site will not render the question. **REQUIRED**  
 > `difficulty` - the difficulty of the question (Example: `"easy"`)  
 > `question` - the question to ask the user (Example: `"Why are donuts so tasty?"`) **REQUIRED**  
 > `correct_answer` - boolean of which answer correct (Example: `"True"` or `"False"`) **REQUIRED**  
